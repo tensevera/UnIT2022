@@ -7,6 +7,7 @@ import AddRep from "./pages/AddRep";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
+<<<<<<< HEAD
   useEffect(() => {
     // GET request using fetch inside useEffect React hook
 
@@ -29,6 +30,8 @@ function App() {
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
 
+=======
+>>>>>>> 39bc7800995a3c1b1f5a4eeb2e686bb33d6813e2
   return (
     <>
       <BrowserRouter>
