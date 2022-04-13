@@ -79,7 +79,7 @@ console.log(sklad);
       {
         element.count += count*1
         isPresent = true
-        setList(prevState => [...prevStategit])
+        setList(prevState => [...prevState])
       }
     }
     )
