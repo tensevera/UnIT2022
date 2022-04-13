@@ -6,13 +6,13 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SettingsVoiceOutlined } from "@material-ui/icons";
 
-function AddRep() {
- const  sklad = "SKLAD"
+function AddRep({sklad}) {
+ //const  sklad = "SKLAD"
   const [list,setList] = useState([]);
   const [name, setName] = useState("");
   const navigate = useNavigate();
   const [id, setID] = useState("");
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   const [isProduct,setIsProduct] = useState(null);
 console.log(sklad);

@@ -6,14 +6,15 @@ import { useEffect, useState } from "react";
 import NativeSelect from '@mui/material/NativeSelect';
 import Typography from '@material-ui/core/Typography';
 
-function PickSklad({setSklad}) {
+function PickSklad({setSklad,setSkladID}) {
   const [warehouses,setWarehouses] = useState([]);
   const [currWare,setCurrWare] = useState(warehouses.length > 0 ? warehouses[0].nazev : null)
 
   const editCurrWare = (input) =>
   {
-    setCurrWare(input)
-    setSklad(input)
+    setCurrWare(input);
+    setSklad(input) ;
+   // debugger;
   }
   useEffect(() => {
     //GET request using fetch inside useEffect React hook

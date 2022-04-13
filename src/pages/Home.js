@@ -1,8 +1,38 @@
 import { Button } from "@mui/material";
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Home() {
+function Home({setInventura}) {
+  function setInventura() {
+    axios
+      .post(
+        `https://inventura.flexibee.eu/v2/c/firma2/inventura`,
+      {
+        "winstrom": {
+          "inventura": [
+          {
+            "popisInventury": "super inventura",
+            "typInventury": "string",
+            "datZahaj": "2022-04-20",
+            "stavK": "stavInventury.zahajena"
+          }
+        ]
+              }
+      },
+
+        {
+          auth: {
+            username: "uzivatel2",
+            password: "uzivatel2uzivatel2",
+          }
+        }
+      )
+      .then((res) => {
+        console.log(res.data.winstrom.results[0].id);
+        setInventura(res.data.winstrom.results[0].id);
+      });
+  }
   return (
     <div align="center" justify="center">
       <p align="center">
@@ -10,7 +40,7 @@ function Home() {
       </p>
       <p align="center">
       <Link to="/pickSklad">
-        <Button variant="text">Nová inventura</Button>
+        <Button onClick={() => setInventura()} variant="text">Nová inventura</Button>
       </Link>
       </p>
       <p align="center">
