@@ -150,7 +150,7 @@ function setInventuraState( ) {
       <Button onClick={(e) => addLocal(id,name,count)}>přidat</Button>
       </div>
 
-      <h1>{"Současná produkt: "+ name}</h1>
+      <h1>{"Současný produkt: "+ name}</h1>
 
      
 {list.map((l)=>{
