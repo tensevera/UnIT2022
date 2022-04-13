@@ -5,7 +5,7 @@ import React, {  useState } from "react";
 import {  useNavigate } from "react-router-dom";
 import "./AddRep.css";
 
-
+//stocktaking page
 
 function AddRep({sklad,inventura}) {
   if(!inventura){
