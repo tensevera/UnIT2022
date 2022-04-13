@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function AddRep({ sklad }) {
   const [isProd, setIsProd] = useState(false);
-
+console.log(sklad);
   function getProdukt(id) {
     axios
       .get(
