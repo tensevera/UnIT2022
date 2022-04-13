@@ -30,7 +30,6 @@ function Home({setInventura}) {
       )
       .then((res) => {
         console.log(res.data.winstrom.results[0].id);
-        setInventura(res.data.winstrom.results[0].id);
       });
   }
   return (
@@ -39,7 +38,7 @@ function Home({setInventura}) {
         <h1>Vyber akci:</h1>
       </p>
       <p align="center">
-      <Link to="/pickSklad">
+      <Link to="/pickSklad" style={{ textDecoration: 'none' }}>
         <Button onClick={() => setInventura()} variant="text">Nová inventura</Button>
       </Link>
       </p>

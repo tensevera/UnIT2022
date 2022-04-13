@@ -93,6 +93,8 @@ function setInventuraState( ) {
         console.log(res);
       });
       setInventuraState();
+      setList([]);
+      setName("");
   }
 
 
