@@ -38,8 +38,11 @@ function PickSklad({setSklad,setSkladID}) {
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <div>
+      <Button onClick={() => navigate(-1)}>Zpět</Button>
       {console.log(currWare)}
       <h3 align="center">Vybrat sklad: </h3>
       <p align="center">
@@ -48,7 +51,7 @@ function PickSklad({setSklad,setSkladID}) {
         {warehouses.map( (ware) => ( <option> {ware.kod} </option>) )}</NativeSelect>) : (<option>Žádné sklady k dispozici</option>)}
       </p>
       { (warehouses.length != 0) && currWare != null &&  <p align="center">
-      <Link to="/addRep" >
+      <Link to="/addRep" style={{ textDecoration: 'none' }}>
         <Button variant="outlined">Potvrdit</Button>
       </Link>
       </p>}

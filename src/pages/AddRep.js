@@ -78,8 +78,8 @@ console.log(sklad);
  
 
   return (
-    <div>
-      <Button onClick={() => navigate(-1)}>go back</Button>
+    <div align="center">
+      <Button onClick={() => navigate(-1)}>Zpět</Button>
       <TextField
         id="outlined-basic"
         label="počet"

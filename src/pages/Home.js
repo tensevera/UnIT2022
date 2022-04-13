@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import {Grid} from "@material-ui/core"
 
 function Home({setInventura}) {
   function setInventura() {
@@ -34,7 +35,7 @@ function Home({setInventura}) {
       });
   }
   return (
-    <div align="center" justify="center">
+    <div align="center">
       <p align="center">
         <h1>Vyber akci:</h1>
       </p>
@@ -44,7 +45,7 @@ function Home({setInventura}) {
       </Link>
       </p>
       <p align="center">
-      <Link to="/">
+      <Link to="/" style={{ textDecoration: 'none' }}>
         <Button variant="text">Historie inventur</Button>
       </Link>
       </p>
