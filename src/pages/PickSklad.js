@@ -6,42 +6,50 @@ import { useEffect, useState } from "react";
 import { SettingsBackupRestore } from "@material-ui/icons";
 
 
-function PickSklad() {
+function PickSklad({onSelect}) {
   const [warehouses,setWarehouses] = useState([]);
+  const [currWare,setCurrWare] = useState(warehouses.length > 0 ? warehouses[0].nazev : null)
 
+  const editCurrWare = (input) =>
+  {
+    setCurrWare(input)
+    onSelect(input)
+  }
+  useEffect(() => {
+    //GET request using fetch inside useEffect React hook
 
-  // useEffect(() => {
-  //   //GET request using fetch inside useEffect React hook
+    axios
+      .get(
+        `https://inventura.flexibee.eu/v2/c/firma2/sklad.json/?detail=full`,
 
-  //   axios
-  //     .get(
-  //       `https://inventura.flexibee.eu/v2/c/firma2/sklad.json/?detail=full`,
+        {
+          auth: {
+            username: "uzivatel2",
+            password: "uzivatel2uzivatel2",
+          },
+        }
+      )
+      .then((res) => {
+        const warehousesArr = res.data.winstrom.sklad;
+        setWarehouses(warehousesArr)
+      });
 
-  //       {
-  //         auth: {
-  //           username: "uzivatel2",
-  //           password: "uzivatel2uzivatel2",
-  //         },
-  //       }
-  //     )
-  //     .then((res) => {
-  //       const warehousesArr = res.data.winstrom.sklad;
-  //       setWarehouses(warehousesArr)
-  //     });
-
-  //   // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  // }, []);
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  }, []);
 
 
   return (
     <div>
+      {console.log(currWare)}
       <l>Vybrat sklad: </l>
       <p>
-        { warehouses.length > 0 ? (<select>){warehouses.map( (ware) => ( <option> {ware.nazev} </option>) )}</select>) : (<option>Žádné sklady k dispozici</option>)}
+        { warehouses.length > 0 ? (<select onChange={(e) => editCurrWare(e.target.value)} >) 
+        <option value="" selected disabled hidden>Vyber sklad</option>
+        {warehouses.map( (ware) => ( <option> {ware.nazev} </option>) )}</select>) : (<option>Žádné sklady k dispozici</option>)}
       </p>
-      { warehouses.length != 0 && <p>
+      { (warehouses.length != 0) && currWare != null &&  <p>
       <Link to="/addRep">
-        <Button variant="text">Potvrdit</Button>
+        <Button variant="text" >Potvrdit</Button>
       </Link>
       </p>}
     </div>
