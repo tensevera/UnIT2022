@@ -9,8 +9,6 @@ function AddRep() {
 
   return (
     <div>
-      <AddItem/>
-      <AddList/>
       <Button onClick={() => navigate(-1)}>go back</Button>
     </div>
   );

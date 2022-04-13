@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { SettingsBackupRestore } from "@material-ui/icons";
+import NativeSelect from '@mui/material/NativeSelect';
 
 
 function PickSklad({onSelect}) {
@@ -41,15 +41,15 @@ function PickSklad({onSelect}) {
   return (
     <div>
       {console.log(currWare)}
-      <l>Vybrat sklad: </l>
+      <h3>Vybrat sklad: </h3>
       <p>
-        { warehouses.length > 0 ? (<select onChange={(e) => editCurrWare(e.target.value)} >) 
+        { warehouses.length > 0 ? (<NativeSelect onChange={(e) => editCurrWare(e.target.value)} >) 
         <option value="" selected disabled hidden>Vyber sklad</option>
-        {warehouses.map( (ware) => ( <option> {ware.nazev} </option>) )}</select>) : (<option>Žádné sklady k dispozici</option>)}
+        {warehouses.map( (ware) => ( <option> {ware.kod} </option>) )}</NativeSelect>) : (<option>Žádné sklady k dispozici</option>)}
       </p>
       { (warehouses.length != 0) && currWare != null &&  <p>
       <Link to="/addRep">
-        <Button variant="text" >Potvrdit</Button>
+        <Button variant="outlined" >Potvrdit</Button>
       </Link>
       </p>}
     </div>
