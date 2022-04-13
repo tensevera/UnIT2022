@@ -4,13 +4,20 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <div>
+    <div align="center" justify="center">
+      <p align="center">
+        <h1>Vyber akci:</h1>
+      </p>
+      <p align="center">
       <Link to="/pickSklad">
         <Button variant="text">Nová inventura</Button>
       </Link>
+      </p>
+      <p align="center">
       <Link to="/">
         <Button variant="text">Historie inventur</Button>
       </Link>
+      </p>
     </div>
   );
 }

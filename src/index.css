@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.sklad
+{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}

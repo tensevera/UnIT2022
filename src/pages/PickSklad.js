@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NativeSelect from '@mui/material/NativeSelect';
+import Typography from '@material-ui/core/Typography';
 
 function PickSklad({setSklad}) {
   const [warehouses,setWarehouses] = useState([]);
@@ -39,15 +40,15 @@ function PickSklad({setSklad}) {
   return (
     <div>
       {console.log(currWare)}
-      <h3>Vybrat sklad: </h3>
-      <p>
+      <h3 align="center">Vybrat sklad: </h3>
+      <p align="center">
         { warehouses.length > 0 ? (<NativeSelect onChange={(e) => editCurrWare(e.target.value)} >) 
         <option value="" selected disabled hidden>Vyber sklad</option>
         {warehouses.map( (ware) => ( <option> {ware.kod} </option>) )}</NativeSelect>) : (<option>Žádné sklady k dispozici</option>)}
       </p>
-      { (warehouses.length != 0) && currWare != null &&  <p>
-      <Link to="/addRep">
-        <Button variant="outlined" >Potvrdit</Button>
+      { (warehouses.length != 0) && currWare != null &&  <p align="center">
+      <Link to="/addRep" >
+        <Button variant="outlined">Potvrdit</Button>
       </Link>
       </p>}
     </div>
