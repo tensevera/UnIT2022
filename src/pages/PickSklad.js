@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import NativeSelect from '@mui/material/NativeSelect';
+import Typography from '@material-ui/core/Typography';
 
 function PickSklad({setSklad}) {
   const [warehouses,setWarehouses] = useState([]);
@@ -38,15 +40,15 @@ function PickSklad({setSklad}) {
   return (
     <div>
       {console.log(currWare)}
-      <l>Vybrat sklad: </l>
-      <p>
-        { warehouses.length > 0 ? (<select onChange={(e) => editCurrWare(e.target.value)} >) 
+      <h3 align="center">Vybrat sklad: </h3>
+      <p align="center">
+        { warehouses.length > 0 ? (<NativeSelect onChange={(e) => editCurrWare(e.target.value)} >) 
         <option value="" selected disabled hidden>Vyber sklad</option>
-        {warehouses.map( (ware) => ( <option> {ware.nazev} </option>) )}</select>) : (<option>Žádné sklady k dispozici</option>)}
+        {warehouses.map( (ware) => ( <option> {ware.kod} </option>) )}</NativeSelect>) : (<option>Žádné sklady k dispozici</option>)}
       </p>
-      { (warehouses.length != 0) && currWare != null &&  <p>
-      <Link to="/addRep">
-        <Button variant="text" >Potvrdit</Button>
+      { (warehouses.length != 0) && currWare != null &&  <p align="center">
+      <Link to="/addRep" >
+        <Button variant="outlined">Potvrdit</Button>
       </Link>
       </p>}
     </div>

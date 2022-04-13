@@ -8,8 +8,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   useEffect(() => {
-    // GET request using fetch inside useEffect React hook
-
     axios
       .get(
         `https://inventura.flexibee.eu/v2/c/firma2/inventura.json/?detail=full`,
@@ -25,14 +23,12 @@ function App() {
         const persons = res;
         console.log(res);
       });
-
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
 
   const [sklad,setSklad] = useState(null)
 
   const editSklad = (newSklad ) => {
-    console.log(newSklad)
+    setSklad(newSklad)
   }
 
   return (
