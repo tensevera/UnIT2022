@@ -7,10 +7,6 @@ import AddRep from "./pages/AddRep";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  const nameP = "uzivatel2" + ":" + "uzivatel2uzivatel2";
-  const headers = {
-    Authorization: btoa(nameP),
-  };
   useEffect(() => {
     // GET request using fetch inside useEffect React hook
 

@@ -6,7 +6,7 @@ function Home() {
   return (
     <div>
       <Link to="/pickSklad">
-        <Button variant="text">pridat</Button>
+        <Button variant="text">Nová inventura</Button>
       </Link>
     </div>
   );
