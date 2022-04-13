@@ -108,7 +108,17 @@ function setInventuraState( ) {
       "cenik": `ean:${id}`,
       "mnozMjReal": count
     }
-    setList(prevState => [...prevState, item]);
+    let isPresent = false;
+    list.map( (element) => 
+      {if(item.cenik===element.cenik)
+      {
+        element.count += count*1
+        isPresent = true
+        setList(prevState => [...prevState])
+      }
+    }
+    )
+    !isPresent && setList(prevState => [...prevState, item]);
     console.log(list);
   }
 
