@@ -114,7 +114,7 @@ function setInventuraState( ) {
     list.map( (element) => 
       {if(item.cenik===element.cenik)
       {
-        element.count += count*1
+        element.count = element.count*1 + count*1
         isPresent = true
         setList(prevState => [...prevState])
       }
