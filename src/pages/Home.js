@@ -8,6 +8,9 @@ function Home() {
       <Link to="/pickSklad">
         <Button variant="text">Nová inventura</Button>
       </Link>
+      <Link to="/">
+        <Button variant="text">Historie inventur</Button>
+      </Link>
     </div>
   );
 }

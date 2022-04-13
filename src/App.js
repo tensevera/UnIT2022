@@ -36,8 +36,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="addRep" element={<AddRep />} />
-          <Route path="pickSklad" element={<PickSklad onSelect={editSklad} />} />
+          <Route path="addRep" element={<AddRep sklad={sklad} />} />
+          <Route path="pickSklad" element={<PickSklad setSklad={setSklad}  />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -5,15 +5,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import NativeSelect from '@mui/material/NativeSelect';
 
-
-function PickSklad({onSelect}) {
+function PickSklad({setSklad}) {
   const [warehouses,setWarehouses] = useState([]);
   const [currWare,setCurrWare] = useState(warehouses.length > 0 ? warehouses[0].nazev : null)
 
   const editCurrWare = (input) =>
   {
     setCurrWare(input)
-    onSelect(input)
+    setSklad(input)
   }
   useEffect(() => {
     //GET request using fetch inside useEffect React hook
@@ -31,12 +30,11 @@ function PickSklad({onSelect}) {
       )
       .then((res) => {
         const warehousesArr = res.data.winstrom.sklad;
-        setWarehouses(warehousesArr)
+        setWarehouses(warehousesArr);
       });
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
-
 
   return (
     <div>
@@ -56,4 +54,4 @@ function PickSklad({onSelect}) {
   );
 }
 
-export default PickSklad
+export default PickSklad;
