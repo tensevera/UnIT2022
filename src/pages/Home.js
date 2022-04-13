@@ -3,6 +3,9 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+//default component
+//home page
+
 function Home({setInventura}) {
   function setInventura( ) {
     axios

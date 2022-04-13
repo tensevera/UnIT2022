@@ -5,6 +5,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import NativeSelect from '@mui/material/NativeSelect';
 
+//page for selection of the warehouse
+
 function PickSklad({setSklad,setSkladID}) {
   const [warehouses,setWarehouses] = useState([]);
   const [currWare,setCurrWare] = useState(warehouses.length > 0 ? warehouses[0].nazev : null)
