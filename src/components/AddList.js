@@ -3,7 +3,19 @@
 function AddList() {
     return (
         <div>
-            <table>a</table>
+            <table id="Scanned">
+                <tr>
+                    <td>   
+                        Id
+                    </td>
+                    <td>   
+                        Name
+                    </td>
+                    <td>   
+                        Amount
+                    </td>
+                </tr>
+            </table>
         </div>
     )
 }
