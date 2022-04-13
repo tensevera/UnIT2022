@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 import Home from "./pages/Home";
@@ -29,13 +29,19 @@ function App() {
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
 
+  const [sklad,setSklad] = useState(null)
+
+  const editSklad = (newSklad ) => {
+    console.log(newSklad)
+  }
+
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="addRep" element={<AddRep />} />
-          <Route path="pickSklad" element={<PickSklad />} />
+          <Route path="pickSklad" element={<PickSklad onSelect={editSklad} />} />
         </Routes>
       </BrowserRouter>
     </>
