@@ -10,27 +10,27 @@ function PickSklad() {
   const [warehouses,setWarehouses] = useState([]);
 
 
-  useEffect(() => {
-    //GET request using fetch inside useEffect React hook
+  // useEffect(() => {
+  //   //GET request using fetch inside useEffect React hook
 
-    axios
-      .get(
-        `https://inventura.flexibee.eu/v2/c/firma2/sklad.json/?detail=full`,
+  //   axios
+  //     .get(
+  //       `https://inventura.flexibee.eu/v2/c/firma2/sklad.json/?detail=full`,
 
-        {
-          auth: {
-            username: "uzivatel2",
-            password: "uzivatel2uzivatel2",
-          },
-        }
-      )
-      .then((res) => {
-        const warehousesArr = res.data.winstrom.sklad;
-        setWarehouses(warehousesArr)
-      });
+  //       {
+  //         auth: {
+  //           username: "uzivatel2",
+  //           password: "uzivatel2uzivatel2",
+  //         },
+  //       }
+  //     )
+  //     .then((res) => {
+  //       const warehousesArr = res.data.winstrom.sklad;
+  //       setWarehouses(warehousesArr)
+  //     });
 
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  }, []);
+  //   // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  // }, []);
 
 
   return (
@@ -39,11 +39,11 @@ function PickSklad() {
       <p>
         { warehouses.length > 0 ? (<select>){warehouses.map( (ware) => ( <option> {ware.nazev} </option>) )}</select>) : (<option>Žádné sklady k dispozici</option>)}
       </p>
-      <p>
+      { warehouses.length != 0 && <p>
       <Link to="/addRep">
         <Button variant="text">Potvrdit</Button>
       </Link>
-      </p>
+      </p>}
     </div>
   );
 }
