@@ -25,13 +25,11 @@ function App() {
       });
   }, []);
 
-  const [sklad,setSklad] = useState(null);
+  const [sklad,setSklad] = useState("SKLAD");
   const [skladID,setSkladID] = useState(null);
 
   const [inventura,setInventura] = useState(null);
 
-
-  
 
   return (
     <>

@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NativeSelect from '@mui/material/NativeSelect';
-import Typography from '@material-ui/core/Typography';
 
 function PickSklad({setSklad,setSkladID}) {
   const [warehouses,setWarehouses] = useState([]);
@@ -14,10 +13,8 @@ function PickSklad({setSklad,setSkladID}) {
   {
     setCurrWare(input);
     setSklad(input) ;
-   // debugger;
   }
   useEffect(() => {
-    //GET request using fetch inside useEffect React hook
 
     axios
       .get(
@@ -35,7 +32,6 @@ function PickSklad({setSklad,setSkladID}) {
         setWarehouses(warehousesArr);
       });
 
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
 
   const navigate = useNavigate();
