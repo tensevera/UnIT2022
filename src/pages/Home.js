@@ -18,12 +18,9 @@ function Home() {
       <h1>Vyber akci</h1>
       <Link to="/pickSklad">
         <Button variant="text">Nová inventura</Button>
-<<<<<<< HEAD
-=======
       </Link>
       <Link to="/">
         <Button variant="text">Historie inventur</Button>
->>>>>>> 39bc7800995a3c1b1f5a4eeb2e686bb33d6813e2
       </Link>
     </div>
   );
