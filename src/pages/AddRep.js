@@ -5,14 +5,15 @@ import List from '@mui/material/List';
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SettingsVoiceOutlined } from "@material-ui/icons";
+import { render } from "@testing-library/react";
 
-function AddRep() {
- const  sklad = "SKLAD"
+function AddRep({sklad}) {
+ //const  sklad = "SKLAD"
   const [list,setList] = useState([]);
   const [name, setName] = useState("");
   const navigate = useNavigate();
   const [id, setID] = useState("");
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   const [isProduct,setIsProduct] = useState(null);
 console.log(sklad);
@@ -63,6 +64,7 @@ console.log(sklad);
 
 
   function addLocal(id,name,count){
+    getProdukt(id)
     const item ={
       name: name,
       count:count,
@@ -71,7 +73,17 @@ console.log(sklad);
       "cenik": `ean:${id}`,
       "mnozMjReal": count
     }
-    setList(prevState => [...prevState, item]);
+    let isPresent = false;
+    list.map( (element) => 
+      {if(item.cenik===element.cenik)
+      {
+        element.count += count*1
+        isPresent = true
+        setList(prevState => [...prevStategit])
+      }
+    }
+    )
+    !isPresent && setList(prevState => [...prevState, item]);
     console.log(list);
   }
 
