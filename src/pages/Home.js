@@ -2,10 +2,9 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import {Grid} from "@material-ui/core"
 
 function Home({setInventura}) {
-  function setInventura() {
+  function setInventura( ) {
     axios
       .post(
         `https://inventura.flexibee.eu/v2/c/firma2/inventura`,
@@ -16,7 +15,7 @@ function Home({setInventura}) {
             "popisInventury": "super inventura",
             "typInventury": "string",
             "datZahaj": "2022-04-20",
-            "stavK": "stavInventury.zahajena"
+            "stavK": `stavInventury.zahajena`
           }
         ]
               }

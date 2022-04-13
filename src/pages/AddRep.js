@@ -1,14 +1,16 @@
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
-import List from '@mui/material/List';
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { SettingsVoiceOutlined } from "@material-ui/icons";
-import { render } from "@testing-library/react";
+import React, {  useState } from "react";
+import {  useNavigate } from "react-router-dom";
+import "./AddRep.css";
 
-function AddRep({sklad}) {
- //const  sklad = "SKLAD"
+
+
+function AddRep({sklad,inventura}) {
+  if(!inventura){
+    inventura =4;
+  }
   const [list,setList] = useState([]);
   const [name, setName] = useState("");
   const navigate = useNavigate();
@@ -17,6 +19,33 @@ function AddRep({sklad}) {
 
   const [isProduct,setIsProduct] = useState(null);
 console.log(sklad);
+
+function setInventuraState( ) {
+  axios
+    .post(
+      `https://inventura.flexibee.eu/v2/c/firma2/inventura`,
+    {
+      "winstrom": {
+        "inventura": [
+        {
+          "id":inventura,
+          "stavK": `stavInventury.hotova`
+        }
+      ]
+            }
+    },
+
+      {
+        auth: {
+          username: "uzivatel2",
+          password: "uzivatel2uzivatel2",
+        }
+      }
+    )
+    .then((res) => {
+      console.log(res.data.winstrom.results[0].id);
+    });
+  }
   function getProdukt(id) {
     axios
       .get(
@@ -33,11 +62,14 @@ console.log(sklad);
         console.log(res);
         const len = res.data.winstrom["skladova-karta"];
         setIsProduct(len.length > 0);
-        setName(len[0]?.nazev);
+        len.length > 0 ? setName(len[0].nazev) : setName("nenalezen");
       });
   }
 
-  function sentProd(id,count) {
+  function sentProd() {
+    if(list.length ===0){
+      return;
+    }
     axios
       .post(
         `https://inventura.flexibee.eu/v2/c/firma2/inventura-polozka`,
@@ -60,15 +92,18 @@ console.log(sklad);
       .then((res) => {
         console.log(res);
       });
+      setInventuraState();
   }
 
 
   function addLocal(id,name,count){
-    getProdukt(id)
+    if(!isProduct){
+      return 0;
+    }
     const item ={
       name: name,
       count:count,
-      "inventura": 1,
+      "inventura": inventura,
       "sklad": 4,
       "cenik": `ean:${id}`,
       "mnozMjReal": count
@@ -91,32 +126,36 @@ console.log(sklad);
 
   return (
     <div align="center">
-      <Button onClick={() => navigate(-1)}>Zpět</Button>
+      <Button style={{position: "absolute" , left:"10px", up:"10px"}} onClick={() => navigate(-1)}>Zpět</Button>
+      <div style={{display:"flex" ,justifyContent:"center",alignItems:"center",paddingTop:"100px"}} >
+
+     
+        <TextField
+          id="outlined-basic"
+          label="EAN"
+          value={id}
+          variant="outlined"
+          onChange={(e) => setID(e.target.value)}
+        />
       <TextField
+      style={{width: "100px" }}
         id="outlined-basic"
         label="počet"
         value={count}
         variant="outlined"
         onChange={(e) => setCount(e.target.value)}
       />
-      <TextField
-        id="outlined-basic"
-        label="EAN"
-        value={id}
-        variant="outlined"
-        onChange={(e) => setID(e.target.value)}
-      />
 
       <Button onClick={(e) => getProdukt(id)}>check</Button>
       <Button onClick={(e) => addLocal(id,name,count)}>přidat</Button>
+      </div>
 
-
+      <h1>{"Současný produkt: "+ name}</h1>
 
      
 {list.map((l)=>{
   return <h1>{l.name} ,{l.count}</h1>
 })}
-      <h1>{name}</h1>
       <Button onClick={(e) => sentProd(list)}>Poslat</Button>
     </div>
   );
