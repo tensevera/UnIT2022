@@ -27,15 +27,15 @@ function App() {
   const [sklad,setSklad] = useState("SKLAD");
   const [skladID,setSkladID] = useState(null);
 
-  const [inventura,setInventura] = useState(null);
+  const [stocktaking,setStocktaking] = useState(null);
 
 
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home setSkladID={setSkladID} setInventura={setInventura}/>} />
-          <Route path="addRep" element={<AddRep sklad={sklad} inventura={inventura} />} />
+          <Route path="/" element={<Home setSkladID={setSkladID} setStocktaking={setStocktaking}/>} />
+          <Route path="addRep" element={<AddRep sklad={sklad} stocktaking={stocktaking} />} />
           <Route path="pickSklad" element={<PickSklad setSklad={setSklad}  />} />
         </Routes>
       </BrowserRouter>

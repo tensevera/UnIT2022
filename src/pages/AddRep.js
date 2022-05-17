@@ -7,10 +7,11 @@ import "./AddRep.css";
 
 //stocktaking page
 
-function AddRep({sklad,inventura}) {
-  if(!inventura){
-    inventura =4;
-  }
+function AddRep({sklad,stocktaking}) {
+  // if(!stocktaking){
+  //   stocktaking =4;
+  // }
+  // debuggin feature
   const [list,setList] = useState([]);
   const [name, setName] = useState("");
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function AddRep({sklad,inventura}) {
   const [isProduct,setIsProduct] = useState(null);
 console.log(sklad);
 
-function setInventuraState( ) {
+function setStocktakingState( ) {
   axios
     .post(
       `https://inventura.flexibee.eu/v2/c/firma2/inventura`,
@@ -28,7 +29,7 @@ function setInventuraState( ) {
       "winstrom": {
         "inventura": [
         {
-          "id":inventura,
+          "id":stocktaking,
           "stavK": `stavInventury.hotova`
         }
       ]
@@ -92,7 +93,7 @@ function setInventuraState( ) {
       .then((res) => {
         console.log(res);
       });
-      setInventuraState();
+      setStocktakingState();
       setList([]);
       setName("");
   }
@@ -105,7 +106,7 @@ function setInventuraState( ) {
     const item ={
       name: name,
       count:count,
-      "inventura": inventura,
+      "inventura": stocktaking,
       "sklad": 4,
       "cenik": `ean:${id}`,
       "mnozMjReal": count
