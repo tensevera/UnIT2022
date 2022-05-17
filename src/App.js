@@ -10,12 +10,12 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        `https://inventura.flexibee.eu/v2/c/firma2/inventura.json/?detail=full`,
+        process.env.REACT_APP_API_URL,
 
         {
           auth: {
-            username: "uzivatel2",
-            password: "uzivatel2uzivatel2",
+            username: process.env.REACT_APP_API_USERNAME,
+            password: process.env.REACT_APP_API_PASSWORD,
           },
         }
       )
