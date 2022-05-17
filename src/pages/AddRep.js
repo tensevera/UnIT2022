@@ -20,34 +20,8 @@ function AddRep({warehouse,stocktaking}) {
 
   const [isProduct,setIsProduct] = useState(null);
 
-function setStocktakingState( ) {
-  axios
-    .post(
-      `https://inventura.flexibee.eu/v2/c/firma2/inventura`,
-    {
-      "winstrom": {
-        "inventura": [
-        {
-          "id":stocktaking,
-          "stavK": `stavInventury.hotova`
-        }
-      ]
-            }
-    },
-
-      {
-        auth: {
-          username: process.env.REACT_APP_API_USERNAME,
-          password: process.env.REACT_APP_API_PASSWORD,
-        }
-      }
-    )
-    .then((res) => {
-      console.log(res.data.winstrom.results[0].id);
-    });
-  }
-  function getProdukt(id) {
-    axios
+ async function getProdukt(id) {
+    await axios
       .get(
         `https://inventura.flexibee.eu/v2/c/firma2/skladova-karta/(sklad = "code:${warehouse}" and ucetObdobi = "code:2022" and cenik="ean:${id}").json?detail=full`,
 
@@ -59,7 +33,6 @@ function setStocktakingState( ) {
         }
       )
       .then((res) => {
-        console.log(res);
         const len = res.data.winstrom["skladova-karta"];
         setIsProduct(len.length > 0);
         len.length > 0 ? setName(len[0].nazev) : setName("nenalezen");
@@ -92,13 +65,12 @@ function setStocktakingState( ) {
       .then((res) => {
         console.log(res);
       });
-      setStocktakingState();
       setList([]);
       setName("");
   }
 
-
-  function addLocal(id,name,count){
+  async function addLocal(id,count){
+    await getProdukt(id)
     if(!isProduct){
       return 0;
     }
@@ -121,7 +93,6 @@ function setStocktakingState( ) {
     }
     )
     !isPresent && setList(prevState => [...prevState, item]);
-    console.log(list);
   }
 
  
@@ -149,7 +120,7 @@ function setStocktakingState( ) {
       />
 
       <Button onClick={(e) => getProdukt(id)}>check</Button>
-      <Button onClick={(e) => addLocal(id,name,count)}>přidat</Button>
+      <Button onClick={(e) => addLocal(id,count)}>přidat</Button>
       </div>
 
       <h1>{"Současný produkt: "+ name}</h1>
