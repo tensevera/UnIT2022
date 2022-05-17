@@ -8,6 +8,7 @@ import NativeSelect from '@mui/material/NativeSelect';
 //page for selection of the warehouse
 
 function PickSklad({setSklad,setSkladID}) {
+  console.log(process.env.REACT_APP_API_URL)
   const [warehouses,setWarehouses] = useState([]);
   const [currWare,setCurrWare] = useState(warehouses.length > 0 ? warehouses[0].nazev : null)
 
@@ -24,14 +25,14 @@ function PickSklad({setSklad,setSkladID}) {
 
         {
           auth: {
-            username: "uzivatel2",
-            password: "uzivatel2uzivatel2",
+            username: process.env.REACT_APP_API_USERNAME,
+            password: process.env.REACT_APP_API_PASSWORD,
           },
         }
       )
       .then((res) => {
-        const warehousesArr = res.data.winstrom.sklad;
-        setWarehouses(warehousesArr);
+        const warehousesArr = res;
+        setWarehouses(warehousesArr.data.winstrom.sklad);
       });
 
   }, []);
@@ -41,14 +42,13 @@ function PickSklad({setSklad,setSkladID}) {
   return (
     <div>
       <Button onClick={() => navigate(-1)}>Zpět</Button>
-      {console.log(currWare)}
       <h3 align="center">Vybrat sklad: </h3>
-      <p align="center">
+      <div align="center">
         { warehouses.length > 0 ? (<NativeSelect onChange={(e) => editCurrWare(e.target.value)} >) 
-        <option value="" selected disabled hidden>Vyber sklad</option>
-        {warehouses.map( (ware) => ( <option> {ware.kod} </option>) )}</NativeSelect>) : (<option>Žádné sklady k dispozici</option>)}
-      </p>
-      { (warehouses.length != 0) && currWare != null &&  <p align="center">
+        <option value="" defaultValue={"selected"} disabled hidden>Vyber sklad</option>
+        {warehouses.map( (ware) => ( <option key={ware.kod}> {ware.kod} </option>) )}</NativeSelect>) : (<option>Žádné sklady k dispozici</option>)}
+      </div>
+      { (warehouses.length !== 0) && currWare != null &&  <p align="center">
       <Link to="/addRep" style={{ textDecoration: 'none' }}>
         <Button variant="outlined">Potvrdit</Button>
       </Link>

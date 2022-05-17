@@ -1,45 +1,44 @@
 import { Button } from "@mui/material";
-import axios from "axios";
-import React, { useEffect } from "react";
+// import axios from "axios";
 import { Link } from "react-router-dom";
 
 //default component
 //home page
 
 function Home({setInventura}) {
-  function setInventura( ) {
-    axios
-      .post(
-        `https://inventura.flexibee.eu/v2/c/firma2/inventura`,
-      {
-        "winstrom": {
-          "inventura": [
-          {
-            "popisInventury": "super inventura",
-            "typInventury": "string",
-            "datZahaj": "2022-04-20",
-            "stavK": `stavInventury.zahajena`
-          }
-        ]
-              }
-      },
+  // function setInventura( ) {
+  //   axios
+  //     .post(
+  //       `https://inventura.flexibee.eu/v2/c/firma2/inventura`,
+  //     {
+  //       "winstrom": {
+  //         "inventura": [
+  //         {
+  //           "popisInventury": "super inventura",
+  //           "typInventury": "string",
+  //           "datZahaj": "2022-04-20",
+  //           "stavK": `stavInventury.zahajena`
+  //         }
+  //       ]
+  //             }
+  //     },
 
-        {
-          auth: {
-            username: "uzivatel2",
-            password: "uzivatel2uzivatel2",
-          }
-        }
-      )
-      .then((res) => {
-        console.log(res.data.winstrom.results[0].id);
-      });
-  }
+  //       {
+  //         auth: {
+  //           username: process.env.REACT_APP_API_USERNAME,
+  //           password: process.env.REACT_APP_API_PASSWORD,
+  //         }
+  //       }
+  //     )
+  //     .then((res) => {
+  //       console.log(res.data.winstrom.results[0].id);
+  //     });
+  // }
   return (
     <div align="center">
-      <p align="center">
+      <div align="center">
         <h1>Vyber akci:</h1>
-      </p>
+      </div>
       <p align="center">
       <Link to="/pickSklad" style={{ textDecoration: 'none' }}>
         <Button onClick={() => setInventura()} variant="text">Nová inventura</Button>

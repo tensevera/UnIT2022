@@ -7,23 +7,22 @@ import AddRep from "./pages/AddRep";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  useEffect(() => {
-    axios
-      .get(
-        process.env.REACT_APP_API_URL,
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       process.env.REACT_APP_API_URL,
 
-        {
-          auth: {
-            username: process.env.REACT_APP_API_USERNAME,
-            password: process.env.REACT_APP_API_PASSWORD,
-          },
-        }
-      )
-      .then((res) => {
-        const persons = res;
-        console.log(res);
-      });
-  }, []);
+  //       {
+  //         auth: {
+  //           username: process.env.REACT_APP_API_USERNAME,
+  //           password: process.env.REACT_APP_API_PASSWORD,
+  //         },
+  //       }
+  //     )
+  //     .then((res) => {
+  //       const persons = res;
+  //     });
+  // }, []);
 
   const [sklad,setSklad] = useState("SKLAD");
   const [skladID,setSkladID] = useState(null);

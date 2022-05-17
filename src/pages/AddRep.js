@@ -37,8 +37,8 @@ function setInventuraState( ) {
 
       {
         auth: {
-          username: "uzivatel2",
-          password: "uzivatel2uzivatel2",
+          username: process.env.REACT_APP_API_USERNAME,
+          password: process.env.REACT_APP_API_PASSWORD,
         }
       }
     )
@@ -53,8 +53,8 @@ function setInventuraState( ) {
 
         {
           auth: {
-            username: "uzivatel2",
-            password: "uzivatel2uzivatel2",
+            username:  process.env.REACT_APP_API_USERNAME,
+            password:  process.env.REACT_APP_API_PASSWORD,
           },
         }
       )
@@ -84,8 +84,8 @@ function setInventuraState( ) {
 
         {
           auth: {
-            username: "uzivatel2",
-            password: "uzivatel2uzivatel2",
+            username:  process.env.REACT_APP_API_USERNAME,
+            password:  process.env.REACT_APP_API_PASSWORD,
           }
         }
       )
