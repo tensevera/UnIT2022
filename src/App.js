@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
 import "./App.css";
 import Home from "./pages/Home";
 import PickWarehouse from "./pages/PickWarehouse";
 import AddRep from "./pages/AddRep";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
 

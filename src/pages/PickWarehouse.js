@@ -8,7 +8,6 @@ import NativeSelect from '@mui/material/NativeSelect';
 //page for selection of the warehouse
 
 function PickWarehouse({setWarehouse}) {
-  console.log(process.env.REACT_APP_API_URL)
   const [warehouses,setWarehouses] = useState([]);
   const [currWare,setCurrWare] = useState(warehouses.length > 0 ? warehouses[0].nazev : null)
 
@@ -45,7 +44,7 @@ function PickWarehouse({setWarehouse}) {
       <h3 align="center">Vybrat sklad: </h3>
       <div align="center">
         { warehouses.length > 0 ? (<NativeSelect onChange={(e) => editCurrWare(e.target.value)} >) 
-        <option value="" defaultValue={"selected"} disabled hidden>Vyber sklad</option>
+        <option value="" selected disabled hidden>Vyber sklad</option>
         {warehouses.map( (ware) => ( <option key={ware.kod}> {ware.kod} </option>) )}</NativeSelect>) : (<option>Žádné sklady k dispozici</option>)}
       </div>
       { (warehouses.length !== 0) && currWare != null &&  <p align="center">
