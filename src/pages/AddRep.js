@@ -20,7 +20,6 @@ function AddRep({warehouse,stocktaking}) {
 
   const [isProduct,setIsProduct] = useState(null);
 
-<<<<<<< HEAD
 function setStocktakingState( ) {
   axios
     .post(
@@ -49,10 +48,6 @@ function setStocktakingState( ) {
   }
   function getProdukt(id) {
     axios
-=======
- async function getProdukt(id) {
-    await axios
->>>>>>> c12ab893378cd1148f37c189f52aa2b12503bc41
       .get(
         `https://inventura.flexibee.eu/v2/c/firma2/skladova-karta/(sklad = "code:${warehouse}" and ucetObdobi = "code:2022" and cenik="ean:${id}").json?detail=full`,
 
@@ -64,10 +59,7 @@ function setStocktakingState( ) {
         }
       )
       .then((res) => {
-<<<<<<< HEAD
         console.log(res);
-=======
->>>>>>> c12ab893378cd1148f37c189f52aa2b12503bc41
         const len = res.data.winstrom["skladova-karta"];
         setIsProduct(len.length > 0);
         len.length > 0 ? setName(len[0].nazev) : setName("nenalezen");
@@ -100,21 +92,13 @@ function setStocktakingState( ) {
       .then((res) => {
         console.log(res);
       });
-<<<<<<< HEAD
       setStocktakingState();
-=======
->>>>>>> c12ab893378cd1148f37c189f52aa2b12503bc41
       setList([]);
       setName("");
   }
 
-<<<<<<< HEAD
 
   function addLocal(id,name,count){
-=======
-  async function addLocal(id,count){
-    await getProdukt(id)
->>>>>>> c12ab893378cd1148f37c189f52aa2b12503bc41
     if(!isProduct){
       return 0;
     }
@@ -137,10 +121,7 @@ function setStocktakingState( ) {
     }
     )
     !isPresent && setList(prevState => [...prevState, item]);
-<<<<<<< HEAD
     console.log(list);
-=======
->>>>>>> c12ab893378cd1148f37c189f52aa2b12503bc41
   }
 
  
@@ -168,11 +149,7 @@ function setStocktakingState( ) {
       />
 
       <Button onClick={(e) => getProdukt(id)}>check</Button>
-<<<<<<< HEAD
       <Button onClick={(e) => addLocal(id,name,count)}>přidat</Button>
-=======
-      <Button onClick={(e) => addLocal(id,count)}>přidat</Button>
->>>>>>> c12ab893378cd1148f37c189f52aa2b12503bc41
       </div>
 
       <h1>{"Současný produkt: "+ name}</h1>
