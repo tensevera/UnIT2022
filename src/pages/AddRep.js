@@ -7,7 +7,7 @@ import "./AddRep.css";
 
 //stocktaking page
 
-function AddRep({sklad,stocktaking}) {
+function AddRep({warehouse,stocktaking}) {
   // if(!stocktaking){
   //   stocktaking =4;
   // }
@@ -19,7 +19,6 @@ function AddRep({sklad,stocktaking}) {
   const [count, setCount] = useState(1);
 
   const [isProduct,setIsProduct] = useState(null);
-console.log(sklad);
 
 function setStocktakingState( ) {
   axios
@@ -50,7 +49,7 @@ function setStocktakingState( ) {
   function getProdukt(id) {
     axios
       .get(
-        `https://inventura.flexibee.eu/v2/c/firma2/skladova-karta/(sklad = "code:${sklad}" and ucetObdobi = "code:2022" and cenik="ean:${id}").json?detail=full`,
+        `https://inventura.flexibee.eu/v2/c/firma2/skladova-karta/(sklad = "code:${warehouse}" and ucetObdobi = "code:2022" and cenik="ean:${id}").json?detail=full`,
 
         {
           auth: {

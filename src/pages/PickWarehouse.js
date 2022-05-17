@@ -7,7 +7,7 @@ import NativeSelect from '@mui/material/NativeSelect';
 
 //page for selection of the warehouse
 
-function PickSklad({setSklad,setSkladID}) {
+function PickWarehouse({setWarehouse}) {
   console.log(process.env.REACT_APP_API_URL)
   const [warehouses,setWarehouses] = useState([]);
   const [currWare,setCurrWare] = useState(warehouses.length > 0 ? warehouses[0].nazev : null)
@@ -15,7 +15,7 @@ function PickSklad({setSklad,setSkladID}) {
   const editCurrWare = (input) =>
   {
     setCurrWare(input);
-    setSklad(input) ;
+    setWarehouse(input) ;
   }
   useEffect(() => {
 
@@ -57,4 +57,4 @@ function PickSklad({setSklad,setSkladID}) {
   );
 }
 
-export default PickSklad;
+export default PickWarehouse;

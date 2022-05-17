@@ -11,7 +11,7 @@ function Home({setStocktaking}) {
         <h1>Vyber akci:</h1>
       </div>
       <p align="center">
-      <Link to="/pickSklad" style={{ textDecoration: 'none' }}>
+      <Link to="/pickWarehouse" style={{ textDecoration: 'none' }}>
         <Button onClick={() => setStocktaking()} variant="text">Nová inventura</Button>
       </Link>
       </p>
